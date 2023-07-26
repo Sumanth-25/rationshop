@@ -1,0 +1,222 @@
+﻿<img src="~/images/update.png" />
+@model DomesticShop.Models.Datamodel
+
+@{
+    ViewBag.Title = "Update";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal" action="/tutorial/action.html">
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <form1>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", onkeydown = "return /[a-z]/i.test(event.key)" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </form1>
+        <form2>
+            <div class="form-group">
+                @Html.LabelFor(model => model.AadhaarNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AadhaarNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AadhaarNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RationCardNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.RationCardNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RationCardNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", pattern = ".+@gmail.com" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </form2>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="link">
+    @Html.ActionLink("Dashboard", "Index", null, new { style = "color:white;text-decoration:none;" })
+</div>
+<style>
+    .link {
+        position: absolute;
+        right: 150px;
+        top: 60px;
+        border: solid;
+        color: white;
+        background-color: SlateBlue;
+        font-family: 'Poppins',sans-serif;
+        padding: 10px 50px;
+        text-align: center;
+        font-size: 16px;
+        height: 20px;
+        font-weight: 700;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        position: absolute;
+        border-radius: 10px;
+    }
+
+        .link:hover {
+            color: white;
+            font-size: 15px;
+            border-radius: 50px;
+        }
+
+    img {
+        height: 500px;
+        width: 600px;
+        float: right;
+        transform: translate(1%,19%);
+    }
+
+    form1 {
+        height: 320px;
+        width: 350px;
+        background-color: rgba(255,255,255,0.13);
+        position: absolute;
+        transform: translate(-170%,-50%);
+        top: 50%;
+        left: 50%;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255,255,255,0.1);
+        box-shadow: 0 0 10px rgba(8,7,16,0.6);
+        padding: 50px 35px;
+    }
+
+        form1 * {
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+    form2 {
+        height: 320px;
+        width: 350px;
+        background-color: rgba(255,255,255,0.13);
+        position: absolute;
+        transform: translate(-65%,-50%);
+        top: 50%;
+        left: 50%;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255,255,255,0.1);
+        box-shadow: 0 0 10px rgba(8,7,16,0.6);
+        padding: 50px 35px;
+    }
+
+        form2 * {
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+    label {
+        display: block;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: 800;
+        color: MediumBlue;
+    }
+
+    input {
+        display: block;
+        height: 20px;
+        width: 60%;
+        background-color: white;
+        font-family: 'Poppins',sans-serif;
+        border-radius: 3px;
+        padding: 10px 50px;
+        margin-top: 8px;
+        font-size: 20px;
+        font-weight: 500;
+        border-width: 5px;
+        border-style: inset;
+        border-color: rgba(69, 93, 226, 0.8);
+        color: black;
+        border: solid;
+        border-radius: 10px;
+    }
+
+        input:hover {
+            color: DarkMagenta;
+        }
+
+        input[type=submit] {
+            border: solid;
+            color: white;
+            background-color: SlateBlue;
+            padding: 10px 50px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            height: 40px;
+            font-weight: 700;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            position: absolute;
+            left: 90px;
+            bottom: 60px;
+            border-radius: 10px;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            
+            margin: 0;
+        }
+
+    .btn:hover {
+        color: white;
+        font-size: 18px;
+        border-radius: 50px;
+    }
+</style>

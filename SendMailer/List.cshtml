@@ -1,0 +1,93 @@
+﻿@model IEnumerable<DomesticShop.Models.DomesticModel>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Mail Record</h2>
+
+<p>
+    @Html.ActionLink("Back to Dashboard", "Index")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RationCardNumber)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.From)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.To)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SentDate)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RationCardNumber)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.From)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.To)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SentDate)
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+<style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 20px;
+        }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+        tr:hover {
+                background-color: #ddd;
+            }
+
+        h2 {
+            text-align: center
+        }
+    </style>

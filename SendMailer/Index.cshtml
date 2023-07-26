@@ -1,0 +1,279 @@
+﻿<img class="rice" src="~/images/Rice.png" />
+<img class="sugar" src="~/images/Sugar.jpg" />
+<img class="wheat" src="~/images/Wheat.jpg" />
+<img class="dal" src="~/images/Dal.jpg" />
+
+<body>
+    
+
+    @model DomesticShop.Models.DomesticModel
+    @{
+        ViewBag.Title = "Index";
+    }
+    <br />
+    <br />
+    <div id="rectangle">Ration Shop Dashboard</div>
+    @using (Html.BeginForm("Index", "SendMailer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <form1>
+
+            <div class="link">
+                @Html.ActionLink("Add Consumer", "Insert", null, new { style = "color:MediumBlue;text-decoration:none;font-weight: bold;" })
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="link">
+                @Html.ActionLink("Consumer Details", "PeopleList", null, new { style = "color:MediumBlue;text-decoration:none;font-weight: bold;" })
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="link">
+                @Html.ActionLink("Update", "ConsumerStockList", null, new { style = "color:MediumBlue;text-decoration:none;font-weight: bold;" })
+            </div>
+
+        </form1>
+        <form2>
+            <div class="textarea">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+
+                    <div class="textarea">
+                        @Html.TextAreaFor(model => model.Message, new { type = "textarea", @style = "color:black;width: 100%;height:100px;border:2px solid;font-weight: bold;", @placeholder = @Html.DisplayNameFor(model => model.Message) })
+                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <br />
+            <div class="link">
+                @Html.ActionLink("Email Record", "MailRecordList", null, new { style = "color:MediumBlue;text-decoration:none;font-weight: bold;" })
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Send" class="btn btn-default" />
+                </div>
+            </div>
+        </form2>
+    }
+    <br />
+
+    <div1 class="logout">
+        @Html.ActionLink("Logout", "Login", null, new { style = "color:white;text-decoration:none;" })
+    </div1>
+</body>
+
+<style>
+    .logout {
+        position: absolute;
+        right: 70px;
+        top: 65px;
+        border: solid;
+        color: white;
+        background-color: SlateBlue;
+        font-family: 'Poppins',sans-serif;
+        padding: 10px 50px;
+        text-align: center;
+        font-size: 16px;
+        height: 20px;
+        font-weight: 700;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        position: absolute;
+        border-radius: 10px;
+    }
+
+        .logout:hover {
+            color: white;
+            font-size: 15px;
+            border-radius: 50px;
+        }
+
+    #rectangle {
+        height: 60px;
+        background: #f5f5f5;
+        color: MediumBlue;
+        font-family: 'Poppins',sans-serif;
+        font-size: 35px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .link {
+        border: solid;
+        background-color: white;
+        padding: 10px 50px;
+        text-align: center;
+        font-size: 15px;
+        display: inline-block;
+        font-family: 'Poppins',sans-serif;
+        border-radius: 20px;
+        font-weight: 500;
+        border-style: inset;
+        border: 2px solid black;
+        padding: 10px 50px;
+        transition-duration: 0.4s;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+        .link:hover {
+            border: 3px solid DarkMagenta;
+            font-size: 16px;
+        }
+
+    form1 {
+        height: 210px;
+        width: 300px;
+        background-color: rgba(255,255,255,0.13);
+        position: absolute;
+        transform: translate(-210%,-40%);
+        top: 50%;
+        left: 55%;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255,255,255,0.1);
+        box-shadow: 0 0 10px rgba(8,7,16,0.6);
+        padding: 50px 35px;
+        text-align: center;
+    }
+
+        form1 * {
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+    form2 {
+        height: 210px;
+        width: 300px;
+        background-color: rgba(255,255,255,0.13);
+        position: absolute;
+        transform: translate(-135%,-40%);
+        top: 50%;
+        left: 64%;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255,255,255,0.1);
+        box-shadow: 0 0 10px rgba(8,7,16,0.6);
+        padding: 50px 35px;
+        text-align: center;
+    }
+
+        form2 * {
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+    form3 {
+        height: 200px;
+        width: 300px;
+        background-color: rgba(255,255,255,0.13);
+        position: absolute;
+        transform: translate(-30%,-40%);
+        top: 50%;
+        left: 75%;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255,255,255,0.1);
+        box-shadow: 0 0 10px rgba(8,7,16,0.6);
+        padding: 50px 35px;
+        text-align: center;
+    }
+
+        form3 * {
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+
+    input[type=file]::file-selector-button {
+        margin-right: 20px;
+        border: solid;
+        padding: 15px 20px;
+        border-radius: 10px;
+        color: black;
+        cursor: pointer;
+        transition: background .2s ease-in-out;
+    }
+
+        input[type=file]::file-selector-button:hover {
+            background: black;
+            color: white;
+        }
+
+    body {
+        height: 90vh;
+        backdrop-filter: blur(8px);
+        color: white;
+        padding: 25px;
+        background-position: center;
+        background-size: cover;
+        background-position: fixed;
+        background-repeat: no-repeat;
+    }
+
+    .rice {
+        height: 400px;
+        width: 400px;
+        float: right;
+        transform: translate(10%,60%);
+    }
+
+    .dal {
+        height: 180px;
+        width: 200px;
+        float: right;
+        transform: translate(290%,60%);
+    }
+
+    .sugar {
+        height: 200px;
+        width: 200px;
+        float: right;
+        transform: translate(20%,250%);
+    }
+
+    .wheat {
+        height: 200px;
+        width: 200px;
+        float: right;
+        transform: translate(110%,140%);
+    }
+
+    input[type=submit] {
+        border: none;
+        color: white;
+        padding: 10px 50px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 700;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 10px;
+        background-color: SlateBlue;
+    }
+
+
+        input[type=submit]:hover {
+            color: white;
+            font-size: 15px;
+            border-radius: 50px;
+        }
+</style>

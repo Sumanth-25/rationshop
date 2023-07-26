@@ -1,0 +1,161 @@
+﻿@model IEnumerable<DomesticShop.Models.Datamodel>
+
+@{
+    ViewBag.Title = "ConsumerStockList";
+}
+
+<h2>Consumer Stock List</h2>
+
+<p class="link1">
+    @Html.ActionLink("Dashborad", "Index", null, new { style = "color:white;text-decoration:none;" })
+</p>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AadhaarNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RationCardNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Things)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AadhaarNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RationCardNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Things)
+        </td>
+        <td>
+            @Html.ActionLink("Add", "ConsumerStockUpdate", new { id=item.Id }, new { style = "text-decoration:none;" }) 
+        </td>
+    </tr>
+}
+
+</table>
+
+
+    <div class="form-group" style="float:right">
+        <div class="col-md-offset-2 col-md-10 link2">
+            @Html.ActionLink("Send", "SendIndividualMail", "SendMailer", null, new { area = "Admin" ,style = "color:white;text-decoration:none;" })
+        </div>
+    </div>
+
+<style>
+    h2 {
+        height: 60px;
+        background: #f5f5f5;
+        color: MediumBlue;
+        font-family: 'Poppins',sans-serif;
+        font-size: 35px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .link1 {
+        position: absolute;
+        right: 50px;
+        top: 90px;
+        border: solid;
+        color: white;
+        background-color: SlateBlue;
+        font-family: 'Poppins',sans-serif;
+        padding: 10px 50px;
+        text-align: center;
+        font-size: 16px;
+        height: 20px;
+        font-weight: 700;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        position: absolute;
+        border-radius: 10px;
+    }
+
+        .link1:hover {
+            color: white;
+            font-size: 15px;
+            border-radius: 50px;
+        }
+
+    .link2 {
+        position: absolute;
+        right: 70px;
+        bottom: 60px;
+        border: solid;
+        color: white;
+        background-color: SlateBlue;
+        font-family: 'Poppins',sans-serif;
+        padding: 10px 50px;
+        text-align: center;
+        font-size: 16px;
+        height: 20px;
+        font-weight: 700;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        position: absolute;
+        border-radius: 10px;
+    }
+
+    .link2:hover {
+        color: white;
+        font-size: 15px;
+        border-radius: 50px;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 20px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    td:hover {
+        background-color: #ddd;
+    }
+
+    h2 {
+        text-align: center
+    }
+</style>

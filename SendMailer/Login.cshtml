@@ -1,0 +1,215 @@
+﻿<img src="~/images/360_F_339709048_ZITR4wrVsOXCKdjHncdtabSNWpIhiaR7.jpg" />
+<h1>Ration Shop Portal System</h1>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <script>
+        function manage(txt) {
+            var bt = document.getElementById('btSubmit');
+            if (txt1.value != '' && txt2.value != '') {
+                bt.disabled = false;
+            }
+            else {
+                bt.disabled = true;
+            }
+        }
+    </script>
+    @model DomesticShop.Models.DomesticModel
+
+    @{
+        ViewBag.Title = "Login";
+    }
+
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal" action="/tutorial/action.html">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { id = "txt1", onkeyup = "manage(this)", @class = "form-control", pattern = ".+@gmail.com" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger", @style = "color:red" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { id = "txt2", onkeyup = "manage(this)", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger", @style = "color:red" })
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Login" id="btSubmit" disabled />
+                </div>
+            </div>
+        </div>
+        
+    }
+    
+</body>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<style media="screen">
+    *,
+    *:before,
+    *:after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    img {
+        height: 600px;
+        width: 700px;
+        float: right;
+    }
+
+    h1 {
+        text-align: right;
+        color: MediumBlue;
+        font-family: 'Poppins',sans-serif;
+        padding-left: 40px;
+        text-shadow: 0 0 40px rgba(8,7,16,0.6);
+    }
+
+   
+
+    .background {
+        width: 430px;
+        height: 520px;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        left: 50%;
+        top: 50%;
+    }
+
+        .background .shape {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+    .shape:first-child {
+        background: linear-gradient( #1845ad, #23a2f6 );
+        left: -380px;
+        top: -10px;
+    }
+
+    .shape:last-child {
+        background: linear-gradient( to right, #ff512f, #f09819 );
+        right: 90px;
+        bottom: -80px;
+    }
+
+    form {
+        height: 520px;
+        width: 400px;
+        background-color: rgba(255,255,255,0.13);
+        position: absolute;
+        transform: translate(-110%,-40%);
+        top: 50%;
+        left: 50%;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255,255,255,0.1);
+        box-shadow: 0 0 10px rgba(8,7,16,0.6);
+        padding: 50px 35px;
+    }
+
+        form * {
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+    label {
+        display: block;
+        margin-top: 30px;
+        font-size: 16px;
+        font-weight: 800;
+        color: MediumBlue;
+    }
+
+    input {
+        display: block;
+        height: 50px;
+        width: 100%;
+        background-color: white;
+        border-radius: 3px;
+        padding: 10px 50px;
+        margin-top: 8px;
+        font-size: 20px;
+        font-weight: 500;
+        border-width: 5px;
+        border-style: inset;
+        border-color: rgba(69, 93, 226, 0.8);
+        color: black;
+        border: solid;
+        border-radius: 10px;
+    }
+
+        input:hover {
+            color: DarkMagenta;
+        }
+
+        input[type=submit] {
+            border: solid;
+            background-color: SlateBlue;
+            color: white;
+            padding: 10px 50px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 700;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 10px;
+
+        }
+
+    .btn:hover {
+        color: white;
+        font-size: 18px;
+        border-radius: 50px;
+    }
+    input[type=submit]:disabled {
+        pointer-events: none;
+        opacity: 0.65;
+    }
+    input[type=submit]:hover {
+        color: white;
+        font-size: 15px;
+        border-radius: 50px;
+    }
+
+</style>

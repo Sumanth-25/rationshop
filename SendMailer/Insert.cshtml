@@ -1,0 +1,311 @@
+﻿<img src="~/images/Add.png" />
+@model DomesticShop.Models.Datamodel
+
+@{
+    ViewBag.Title = "Insert";
+}
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="phoneno-all-numeric-validation.js"></script>
+</head>
+
+
+<h2>Add Consumer</h2>
+<body>
+
+    <script>
+        function manage(txt) {
+            var bt = document.getElementById('btSubmit');
+            if (txt1.value != '' && txt2.value != '' && txt3.value != '' && txt4.value != '' && txt5.value != '' && txt6.value != '') {
+                bt.disabled = false;
+            }
+            else {
+                bt.disabled = true;
+            }
+        }
+        function enableButton2() {
+            var phoneNo = document.getElementById('txt3');
+            if (phoneNo.value.length < 10 || phoneNo.value.length > 10) {
+                alert("Please Enter 10 Digit Mobile Number");
+                return false;
+            }
+            var RationNo = document.getElementById('txt4');
+            if (RationNo.value.length < 12 || RationNo.value.length > 12) {
+                alert("Please Enter 12 Digit Aadhaar Number");
+                return false;
+            }
+            var email = document.getElementById('txt6');
+            var expr = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            if (expr.test(email)) {
+                alert("Please Enter valid email");
+                return false;
+            }
+            else {
+                document.getElementById("button2").disabled = false;
+            }
+
+        }
+    </script>
+    
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal" action="/tutorial/action.html">
+
+            <form1>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { id = "txt1", onkeyup = "manage(this)", @class = "form-control", onkeydown = "return /[a-z]/i.test(event.key)" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { id = "txt2", onkeyup = "manage(this)", @class = "form-control", type = "date", value = "2017-06-01" } })
+                        @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { id = "txt3", onkeyup = "manage(this)", onkeypress = "return isNumber(event)", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </form1>
+            <form2>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AadhaarNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AadhaarNumber, new { htmlAttributes = new { id = "txt4", onkeyup = "manage(this)", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AadhaarNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RationCardNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RationCardNumber, new { htmlAttributes = new { id = "txt5", onkeyup = "manage(this)", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.RationCardNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { id = "txt6", onkeyup = "manage(this)", @class = "form-control", pattern = ".+@gmail.com" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </form2>
+            
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" id="btSubmit" value="Check" onclick="enableButton2()" disabled />
+                    <input type="submit" value="Create" id="button2"  disabled/>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div1 class="link">
+        @Html.ActionLink("Dashboard", "Index", null, new { style = "color:white;text-decoration:none;" })
+    </div1>
+
+</body>
+<style>
+        h2 {
+            height: 60px;
+            background: #f5f5f5;
+            color: MediumBlue;
+            font-family: 'Poppins',sans-serif;
+            font-size: 35px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .link {
+            position: absolute;
+            right: 70px;
+            top: 90px;
+            border: solid;
+            color: white;
+            background-color: SlateBlue;
+            padding: 10px 50px;
+            font-family: 'Poppins',sans-serif;
+            text-align: center;
+            font-size: 16px;
+            height: 20px;
+            font-weight: 700;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            position: absolute;
+            border-radius: 10px;
+        }
+
+            .link:hover {
+                color: white;
+                font-size: 15px;
+                border-radius: 50px;
+            }
+
+        img {
+            height: 500px;
+            width: 600px;
+            float: right;
+            transform: translate(-5%,15%);
+        }
+
+        form1 {
+            height: 320px;
+            width: 350px;
+            background-color: rgba(255,255,255,0.13);
+            position: absolute;
+            transform: translate(-170%,-50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 10px rgba(8,7,16,0.6);
+            padding: 50px 35px;
+        }
+
+            form1 * {
+                font-family: 'Poppins',sans-serif;
+                color: #ffffff;
+                letter-spacing: 0.5px;
+                outline: none;
+                border: none;
+            }
+
+        form2 {
+            height: 320px;
+            width: 350px;
+            background-color: rgba(255,255,255,0.13);
+            position: absolute;
+            transform: translate(-65%,-50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 10px rgba(8,7,16,0.6);
+            padding: 50px 35px;
+        }
+
+            form2 * {
+                font-family: 'Poppins',sans-serif;
+                color: #ffffff;
+                letter-spacing: 0.5px;
+                outline: none;
+                border: none;
+            }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 800;
+            color: MediumBlue;
+        }
+
+        input {
+            display: block;
+            height: 20px;
+            width: 60%;
+            background-color: white;
+            border-radius: 3px;
+            padding: 10px 50px;
+            margin-top: 8px;
+            font-size: 20px;
+            font-weight: 500;
+            border-width: 5px;
+            border-style: inset;
+            border-color: rgba(69, 93, 226, 0.8);
+            color: black;
+            border: solid;
+            border-radius: 10px;
+        }
+
+            input:hover {
+                color: DarkMagenta;
+            }
+
+            input[type=submit] {
+                border: solid;
+                color: white;
+                background-color: SlateBlue;
+                padding: 10px 50px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                height: 40px;
+                font-weight: 700;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+                position: absolute;
+                left: 550px;
+                bottom: 60px;
+                border-radius: 10px;
+            }
+
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                margin: 0;
+            }
+
+            input[type=submit]:hover {
+                color: white;
+                font-size: 18px;
+                border-radius: 50px;
+            }
+            input[type=button] {
+                border: solid;
+                color: white;
+                background-color: SlateBlue;
+                padding: 10px 50px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                height: 40px;
+                font-weight: 700;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+                position: absolute;
+                left: 90px;
+                bottom: 60px;
+                border-radius: 10px;
+            }
+            input[type=button]:hover {
+                color: white;
+                font-size: 18px;
+                border-radius: 50px;
+            }
+            input[type=submit]:disabled {
+                pointer-events: none;
+                opacity: 0.65;
+            }
+            input[type=button]:disabled {
+                pointer-events: none;
+                opacity: 0.65;
+            }
+    </style>
